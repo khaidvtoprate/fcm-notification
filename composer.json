@@ -1,0 +1,39 @@
+{
+  "name": "thadico/fcm-notification",
+  "autoload": {
+    "psr-4": {
+      "Thadico\\FcmNotification\\": "src/"
+    }
+  },
+  "description": "Simple notification using FCM",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "khaidv",
+      "email": "khaidv@toprate.io"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "mongodb/laravel-mongodb": "^4.1",
+    "mongodb/mongodb": "1.16.*"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Thadico\\FcmNotification\\Providers\\NotificationServiceProvider"
+      ],
+      "aliases": {
+        "Notification": "Thadico\\FcmNotification\\Facades\\Notification"
+      }
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "@php artisan vendor:publish --provider=\"Thadico\\FcmNotification\\Providers\\NotificationServiceProvider\" --tag=notification --force"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
